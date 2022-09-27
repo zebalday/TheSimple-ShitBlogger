@@ -1,0 +1,16 @@
+<!-- IMPORTACION DE FONTAWESOME -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+{% if Posts.has_previous %}
+    <a href="?page={{Posts.previous_page_number}}"><i class="fa-solid fa-chevron-left"></i></a>
+{% endif %}
+
+
+<span class="actual-post">
+    {{Posts.number}} 
+</span>
+
+
+{% if Posts.has_next %}
+    <a href="?page={{Posts.next_page_number}}"><i class="fa-solid fa-chevron-right"></i></a>
+{% endif %}

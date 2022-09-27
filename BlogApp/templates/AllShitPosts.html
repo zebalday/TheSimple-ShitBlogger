@@ -1,0 +1,62 @@
+{% extends "Layouts/Layout.html" %}
+{% load static %}
+
+{% block PageTitle %} {{PageTitle}} {% endblock PageTitle %}
+
+{% block PageStyle %}
+    <link rel="stylesheet" href="{% static 'Styles/PostsStyle.css' %}">    
+{% endblock PageStyle %}
+
+{% block Content-title %} {{ContentTitle}} {% endblock Content-title %} 
+
+{% block Content %}
+
+    <!-- MUESTRO POST -->
+    {% for Post in Posts %}
+        <div class="post-container">
+            
+            <!-- BANNER DE INFORMACIÓN DEL POST -->
+            <div class="post-banner">
+
+                <!-- MINIATURA -->
+                <div class="post-thumbnail">
+                    <img src="{{Post.image.url}}" alt="PostThumbnail" class="post-thumbnail">
+                </div>
+                <!-- INFORMACION -->
+                <div class="post-info">
+                    <!-- TÍTULO -->
+                    <h2 class="post-title">{{Post.title|striptags|safe}}</h2>
+
+                    <!-- FECHA DE CREACIÓN -->
+                    <p class="post-date">Publicación: {{Post.created_at.date|striptags|safe}}</p>
+
+                    <!-- CATEGORÍAS -->
+                    <div class="post-categories">
+                        {% for Category in Post.categories.all %}
+                            <p class="post-category">{{Category}}</p>
+                            {% if not forloop.last %}
+                                <p class="post-category">-</p>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            
+
+            <!-- CONTENIDO DEL POST -->
+            <div class="post-content">
+                <p>
+                    {{Post.content|striptags|safe}}
+                </p>
+            </div>
+
+            <!-- INCLUYO EL PAGINADOR DE POSTS -->
+            <div class="posts-paginator">
+                {% include 'ShitPostsPaginator.html'%}
+            </div>
+        </div>
+    {% endfor %}
+
+    
+
+{% endblock Content %}

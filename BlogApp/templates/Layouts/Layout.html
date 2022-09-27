@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <!-- Título y Estilos de las páginas -->
+        <title>ShitBlogger | {% block PageTitle %}{% endblock PageTitle %}</title>
+        <link rel="shortcut icon" href="{% static 'Images/Icon.png' %}" type="image/x-icon">
+        <link rel="stylesheet" href="{% static 'Styles/LayoutStyle.css' %}">
+        {% block PageStyle %}<!-- Estilo propio de la página -->{% endblock PageStyle %}
+    </head>
+
+    <!-- Video de fondo -->
+    <div class="video-container">
+        <video playsinline autoplay muted loop>
+            <source src="/static/Videos/vaporwave.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <!-- Banner de la página -->
+        <header>
+            <div class="banner">
+                <h1 class="banner-title">The Simple-ShitBlogger</h1>
+            </div>
+        </header>
+
+        <!-- Barra de navegacion -->
+        <div class="nav-container">
+            <span class="nav-blur-izq"></span>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'Index' %}">Inicio</a></li>
+                    <li><a href="{% url 'AllPosts' %}">ShitPosts</a></li>
+                    {% if user.username == "Admin" or user.username == "zebalday" %}
+                    <!-- Administración -->
+                    <li> <a href="http://127.0.0.1:8000/admin/" target="_blank">Admin</a></li>
+                    <li> <a href= "{% url 'Logout' %}" >Logout</a> </li>
+                    {% else %}
+                    <li><a href="{% url 'Login' %}">Login</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+            <span class="nav-blur-der"></span>
+        </div>
+
+
+        <!-- CONTENIDO DE LA PÁGINA-->
+        <body>        
+            <div class="content-container">
+                
+                <!-- SECCIÓN IZQUIERDA -->
+                <div class="left-section">
+
+                    <!-- REDES SOCIALES -->
+                    <div class="links-section">
+                        <div class="links-title">
+                            <h2 class="title">Redes Sociales</h2>
+                        </div>
+                        <div class="links-list">
+                            {% block RRSS-links %}
+                                <ul>
+                                    {% for Social in SocialMedia %}
+                                        <li><a href="{{Social.link}}">{{Social.name}}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            {% endblock RRSS-links %}
+                        </div>
+                    </div>
+
+                    <!-- LINKS MISCELÁNEOS -->
+                    <div class="links-section">
+                        <div class="links-title">
+                            <h2 class="title">Misceláneo</h2>
+                        </div>
+                        <div class="links-list">
+                            {% block MISC-links %}
+                                <ul>
+                                    {% for Misc in MiscLinks %}
+                                        <li><a href="{{Misc.link}}" target="_blank">{{Misc.name}}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            {% endblock MISC-links %}
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- CONTENIDO -->
+                <div class="page-content">
+                    <h1 class="content-title">
+                        {% block Content-title %} Título {% endblock Content-title %}
+                    </h1>
+                    <div class="content">
+                        {% block Content %}
+                            <!-- Contenido de plantillas hijas --> 
+                        {% endblock Content %}
+                    </div>
+                </div>
+            </div>
+        
+            
+        </body>
+        
+        <!-- <footer> SimpleBlog by @zebalday_ | Made with Django</footer> -->
+        <div class="footer-container">
+            <footer>
+                The Simple-ShitBlogger By @Zebalday_  // MADE WITH DJANGO
+            </footer>
+        </div>
+    </div>
+
+</html>

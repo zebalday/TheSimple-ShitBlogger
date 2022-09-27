@@ -1,0 +1,50 @@
+{% extends "Layouts/Layout.html" %}
+{% load static %}
+
+{% block PageTitle %} {{PageTitle}} {% endblock PageTitle %}
+<!-- DEBE PASÁRSELE DESDE LA VISTA -->
+
+{% block PageStyle %}
+<link rel="stylesheet" href="{% static 'Styles/LoginStyle.css' %}">
+{% endblock PageStyle %}
+
+{% block Content-title %} {{ContentTitle}} {% endblock Content-title %}
+<!-- DEBE PASÁRSELE DESDE LA VISTA -->
+
+{% block Content %}
+
+    <div class="login-container">
+        <form action="{% url 'Login' %}" method="POST">
+            {% csrf_token %}
+            <!-- Titulo -->
+            <div class="login-title-container">
+                <span class="log-blur-izq"></span>
+                <h2 class="login-title">Ingresa tus credenciales</h2>
+                <span class="log-blur-der"></span>
+            </div>
+
+            <!-- Mensaje de credenciales incorrectas -->
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="warning-msg-container">
+                        <span class="warning-msg-izq"></span>
+                            <p class="warning-msg">{{message}}</p>
+                        <span class="warning-msg-der"></span>
+                    </div>   
+                {% endfor %}
+            {% endif %}
+
+            <!-- Credeciales -->
+            <label class="username-lbl" for="username">Nombre de usuario:</label>
+            <input class="username-input" type="text" name="username">
+            <br>
+            <label class="pass-lbl" for="password">Contraseña:</label>
+            <input class="pass-input" type="password" name="password">
+            <br>
+            
+            <!-- Boton -->
+            <input class="btn-login" type="submit" value="Ingresar">
+        </form>
+    </div>
+
+{% endblock Content %}

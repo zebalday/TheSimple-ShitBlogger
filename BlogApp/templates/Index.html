@@ -1,0 +1,106 @@
+{% extends "Layouts/Layout.html" %}
+{% load static %}
+
+{% block PageTitle %} {{PageTitle}} {% endblock PageTitle %} <!-- DEBE PASÁRSELE DESDE LA VISTA -->
+
+{% block PageStyle %}
+    <link rel="stylesheet" href="{% static 'Styles/IndexStyle.css' %}">
+{% endblock PageStyle %}
+
+{% block Content-title %} {{ContentTitle}} {% endblock Content-title %} <!-- DEBE PASÁRSELE DESDE LA VISTA -->
+
+{% block Content %}
+
+
+    <div class="index-container">
+        
+        <!-- DESCRIPCIÓN Y PROPÓSITO -->
+        <div class="index-purpose">
+            <div class="section-title">
+                <h2 class="title">The Simple-ShitBlogger</h2>
+            </div>
+            <div class="section-content">
+                <p>
+                    Mis felicitaciones a todo aquél individuo que dedique tiempo de su "interesante" vida a LEER las 
+                    genialidades más absurdas que me dedico a escribir en esta mierda de Blog. Cuanto más tiempo pasen
+                    vagando por éste llamativo sitio, lo único que podrán sacar en limpio serán 2 cosas: 
+                    Su creador se empeña en ser un idiota, y su diseño excéntrico y colorido es una vieja estrategia 
+                    de marketing para desviar la atención del pésimo producto intelectual que ofrece.
+                </p>
+                <h2>The Simple-ShitBlogger</h2>
+                <h2>By @zebalday_</h2>
+                <img src="{% static 'Images/PerfilAlday.jpg'%}" alt="ProfilePic">
+                <p>
+                    Nacido y crecido en un país tercermundista al que no vale la pena nombrar. Estudiante insaciable de 
+                    ingeniería informática aunque lo que más me interesa es la programación en todo su espectro; desde 
+                    lo más fácil, que es la programación web, hasta los algoritmos de predicción generados por inteligencia 
+                    artificial y deep learning. 
+                </p>
+                <p>
+                    Después de casi 2 años de iniciada la carrera ya he desarrollado al menos 3 proyectos importantes de 
+                    desarrollo web: Un sitio de venta de videojuegos con carrito de compras y administración de stock de juegos
+                    hecho con PHP, Javascript y MySQL; Un sitio web para generar códigos QR a partir de información ingresada en
+                    un textbox, además de descargar videos de Youtube a partir de una URL válida; Finalmente, este proyecto de blog
+                    en el cual estoy trabajando actualmente y pretende ser mi MAIN-PAGE para postear cuanta basura pueda.
+                </p>
+            </div>
+        </div>
+        
+        <!-- TECNOLOGÍA Y ARQUITECTURA -->
+        <div class="index-arch">
+            <div class="section-title">
+                <h2 class="title">Arquitectura y Stack</h2>
+            </div>
+            <div class="section-content">
+                <p>
+                    Para ti, persona sin cultura ni conocimientos técnicos avanzados en ninguna materia, la Arquitectura
+                    se refiere meramente a la tarea de realizar los planos necesarios para la construcción de un edificio. 
+                    PERO, como en este punto ya deberías haberte imaginado, la arquitectura no se limita solamente a eso, sino
+                    que es una -llamémosla- disciplina que abarca inumerables aspectos de la vida diaria.
+                </p>
+                <p>
+                    Straight to the point. La arquitectura de este sitio es bastante simple: Landing Page (el inicio, 
+                    donde esás ahora), ShitPosts (obviamente, donde encontrarás la basura de primera categoría que 
+                    tengo para ofrecerte) y Registro (donde podrás darme tus sabrosos datos y a cambio te notificaré 
+                    cada vez que publique otra maestra de la mediocre literatura digital del siglo XXI).
+                </p>
+                <ul>
+                    <b>Lenguajes y tecnologías utilizadas:</b>
+                    <li>HTML & CSS</li>
+                    <li>Python + Django Framework 4.0</li>
+                    <li>Próximamente Javascript (Siempre y cuando sea necesario)</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- LINKS Y AGRADECIMIENTOS -->
+        <div class="index-greetings">
+            <div class="section-title">
+                <h2 class="title">Agradecimientos</h2>
+            </div>
+            <div class="section-content">
+                <p>
+                    Afortunadamente no tengo que agradecer a ningún profesor de la carrera porque todos los conocimientos
+                    necesarios para desarrollar este <b>Shit-Blog</b> fueron aprendidos googleando. La única persona
+                    que me ayudó fue <a href="https://victorroblesweb.es/">Victor Robles web</a> con su curso de master en
+                    Python y Django.
+                </p>
+                <ul>
+                    <b>Algunas de las herramientas utilizadas:</b>
+                    <li><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">Full Flexbox Guide</a></li>
+                    <li><a href="https://html-css-js.com/css/generator/box-shadow/">BoxShadow css Generator</a></li>
+                    <li><a href="https://cssgradient.io/">Gradient css Generator</a></li>
+                    <li><a href="https://openclassrooms.com/en/courses/7107341-intermediate-django/7263527-create-a-login-page-with-class-based-views">Django class based views tutorial</a></li>
+                    <li><a href="https://cssbud.com/css-generator/css-glow-generator/">Glow css Generator</a></li>
+                    <li><a href="https://safeimagekit.com/">Image kit</a></li>
+                    <li><a href="https://giphy.com/">Giphy: Para robar Gifs en formato mp4</a></li>
+                    <li><a href="https://express.adobe.com/es-ES/tools/convert-to-gif">Adobe: Para convertir a GIF los videos robados</a></li>
+                </ul>
+
+            </div>
+        </div>
+
+    </div>
+
+
+{% endblock Content %}
